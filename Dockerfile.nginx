@@ -8,13 +8,10 @@ RUN mkdir /usr/share/nginx/html
 RUN git clone https://github.com/hossain109/TPDevOps.git /usr/share/nginx/html
 
 #Ajouter des arguments
-ARG TITLE="Merci de visiter mon siteweb"
-ARG IMAGE="dev.png"
-ARG NOM="HOSSAIN Mohammad"
+ARG search_text
+ARG replace_text
 ARG path=/usr/share/nginx/html/index.html
 
-RUN sed -i "s/{{TITLE}}/${TITLE}/g" /usr/share/nginx/html/index.html && \
-    sed -i "s|{{IMAGE}}|${IMAGE}|g" /usr/share/nginx/html/index.html && \
-    sed -i "s/{{NOM}}/${NOM}/g" /usr/share/nginx/html/index.html
+RUN sed -i "s/${search_text}/${replace_text}/g" ${path} 
 
 EXPOSE 80
