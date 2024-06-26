@@ -7,13 +7,15 @@ RUN rm -rf /usr/local/apache2/htdocs
 RUN mkdir /usr/local/apache2/htdocs
 RUN git clone https://github.com/hossain109/TPDevOps.git /usr/local/apache2/htdocs
 #Ajouter des arguments
-ARG TITLE="Merci de visiter mon siteweb"
-ARG IMAGE="dev.png"
-ARG NOM="HOSSAIN Mohammad"
+ENV TITLE="Merci de visiter mon siteweb"
+ENV IMAGE="dev.png"
+ENV NOM="HOSSAIN Mohammad"
 
 
-RUN sed -i "s/{{TITLE}}/${TITLE}/g" /usr/local/apache2/htdocs/index.html && \
-    sed -i "s|{{IMAGE}}|${IMAGE}|g" /usr/local/apache2/htdocs/index.html && \
-    sed -i "s/{{NOM}}/${NOM}/g" /usr/local/apache2/htdocs/index.html
+# RUN sed -i "s/{{TITLE}}/${TITLE}/g" /usr/local/apache2/htdocs/index.html && \
+#     sed -i "s|{{IMAGE}}|${IMAGE}|g" /usr/local/apache2/htdocs/index.html && \
+#     sed -i "s/{{NOM}}/${NOM}/g" /usr/local/apache2/htdocs/index.html
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 80
