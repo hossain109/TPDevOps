@@ -13,8 +13,8 @@ ARG IMAGE="dev.png"
 ARG NOM="HOSSAIN Mohammad"
 ARG path=/usr/share/nginx/html/index.html
 
-RUN sed -i "s/{{TITLE}}/${TITLE}/g" /usr/share/nginx/html/index.html && \
+RUN sed -i "s/{{TITLE}}/${TITLE//\//\\/}/g" /usr/share/nginx/html/index.html && \
     sed -i "s|{{IMAGE}}|${IMAGE}|g" /usr/share/nginx/html/index.html && \
-    sed -i "s|{{NOM}}|${NOM}|g" /usr/share/nginx/html/index.html
+    sed -i "s/{{NOM}}/${NOM//\//\\/}/g" /usr/share/nginx/html/index.html
 
 EXPOSE 80
