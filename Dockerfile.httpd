@@ -16,6 +16,10 @@ ENV NOM="HOSSAIN Mohammad"
 #     sed -i "s|{{IMAGE}}|${IMAGE}|g" /usr/local/apache2/htdocs/index.html && \
 #     sed -i "s/{{NOM}}/${NOM}/g" /usr/local/apache2/htdocs/index.html
 
+# Give execute permission to the entrypoint script
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint to the script
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 80
